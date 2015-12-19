@@ -1,8 +1,6 @@
 Butfon Woocommerce Eklentisi
 ===
 
-![Bulutfon Banner](https://github.com/Projekod/Bulutfon-WooCommerce-Eklentisi/blob/master/document/projekod.png)
-
 Bulutfon sanal santral için geliştirilen Woocommerce eklentisi.
 
 Lisans
