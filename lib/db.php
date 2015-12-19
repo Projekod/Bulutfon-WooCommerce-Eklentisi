@@ -4,12 +4,11 @@ function projekod_register_plugin(){
     projekod_create_options();
     projekod_create_tables();
     projekod_insert_sms_default_template();
-
 }
 
 function projekod_get_sms_queue(){
     global $wpdb;
-    return $wpdb->get_results('SELECT * FROM ' . $wpdb->prefix . 'sms_queue');
+    return $wpdb->get_results('SELECT * FROM ' .$wpdb->prefix.'sms_queue');
 }
 
 function projekod_get_sms_template($id = ''){
@@ -28,21 +27,23 @@ function projekod_get_sms_template_from_status($status){
 
 function projekod_add_to_queue(){
     global $wpdb;
+    print_r($_POST['ids']);
     if(isset($_POST) && $_POST){
-        print_r($_POST);
-        $argument = [];
-        foreach($_POST['customer'] as $customer){
-//            $argument['ad'] = $customer['first_name'];
-//            $argument['soyad'] = $customer['last_name'];
-//            $json = json_encode($argument);
-//            $wpdb->insert($wpdb.'sms_queue',[
-//                'date_added' => date('Y-m-d H:i:s'),
-//                'status' => 1,
-//                'sms_content' => null,
-//                'template_id' => $_POST['sms_id'],
-//                'phone_number' => $customer['telephone'],
-//                'arguments' => $json
-//            ]);
+        $customers = projekod_get_all_customers();
+        foreach($_POST['ids'] as $id){
+            foreach($customers as $customer){
+                if($customer->id == $id){
+                    $argument = ['ad' => $customer->first_name, 'soyad' => $customer->last_name];
+                    $wpdb->insert($wpdb->prefix.'sms_queue',[
+                        'date_added' => date('Y-m-d H:i:s'),
+                        'status' => '1',
+                        'sms_content' => null,
+                        'template_id' => $_POST['sms_id'],
+                        'phone_number' => $customer->telephone,
+                        'arguments' => json_encode($argument)
+                    ]);
+                }
+            }
         }
     }
 }
@@ -148,16 +149,6 @@ function projekod_insert_sms_default_template(){
             'content' => '{siparis_durumu}{siparis_numarasi}'
         ]);
     }
-}
-
-function projekod_insert_queue(){
-    global $wpdb;
-    $wpdb->insert($wpdb->prefix.'sms_template', [
-        'date_added' => date('Y-m-d H:i:s'),
-        'status' => '1',
-        'name' => 'Sipariş Oluşturuldu',
-        'content' => '{ad}{soyad}{fiyat}{siparis_numarasi}'
-    ]);
 }
 
 function projekod_create_options(){
