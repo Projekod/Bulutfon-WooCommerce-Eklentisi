@@ -148,6 +148,12 @@ function projekod_insert_sms_default_template(){
             'name' => 'Sipariş Durumu Güncelledi',
             'content' => '{siparis_durumu}{siparis_numarasi}'
         ]);
+        $wpdb->insert($wpdb->prefix.'sms_template', [
+            'date_added' => date('Y-m-d H:i:s'),
+            'status' => '0',
+            'name' => 'Yeni Üye Kayıt Oldu',
+            'content' => '{ad}{soyad}'
+        ]);
     }
 }
 
