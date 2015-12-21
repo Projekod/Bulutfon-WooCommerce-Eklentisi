@@ -134,24 +134,24 @@ function projekod_get_user_from_number($number){
 
 function projekod_insert_sms_default_template(){
     global $wpdb;
-    $link = $wpdb->get_row( "SELECT * FROM ".$wpdb->prefix."sms_template WHERE name = 'Sipariş Oluşturuldu' or name = 'Sipariş Durumu Güncelledi'");
+    $link = $wpdb->get_row( "SELECT * FROM ".$wpdb->prefix."sms_template WHERE name = 'Sipariş Onaylandı' or name = 'Sipariş Notu' or name = 'Sipariş Oluşturuldu'");
     if($link == null){
         $wpdb->insert($wpdb->prefix.'sms_template', [
             'date_added' => date('Y-m-d H:i:s'),
             'status' => '0',
+            'name' => 'Sipariş Onaylandı',
+            'content' => '{ad}{soyad}'
+        ]);
+        $wpdb->insert($wpdb->prefix.'sms_template', [
+            'date_added' => date('Y-m-d H:i:s'),
+            'status' => '0',
+            'name' => 'Sipariş Notu',
+            'content' => '{ad}{soyad}{not}'
+        ]);
+        $wpdb->insert($wpdb->prefix.'sms_template', [
+            'date_added' => date('Y-m-d H:i:s'),
+            'status' => '0',
             'name' => 'Sipariş Oluşturuldu',
-            'content' => '{ad}{soyad}{fiyat}{siparis_numarasi}'
-        ]);
-        $wpdb->insert($wpdb->prefix.'sms_template', [
-            'date_added' => date('Y-m-d H:i:s'),
-            'status' => '0',
-            'name' => 'Sipariş Durumu Güncelledi',
-            'content' => '{siparis_durumu}{siparis_numarasi}'
-        ]);
-        $wpdb->insert($wpdb->prefix.'sms_template', [
-            'date_added' => date('Y-m-d H:i:s'),
-            'status' => '0',
-            'name' => 'Yeni Üye Kayıt Oldu',
             'content' => '{ad}{soyad}'
         ]);
     }
@@ -161,7 +161,7 @@ function projekod_create_options(){
     add_option('bulutfon_masterKey' );
     add_option('bulutfon_notify_onOrderComplete' );
     add_option('bulutfon_notify_onOrderStatusChange' );
-    add_option('bulutfon_notify_onNewUser' );
+    add_option('bulutfon_notify_addOrderNote' );
     add_option('bulutfon_sms_cronCount' );
     add_option('bulutfon_sms_baslik' );
     add_option('bulutfon_sms_numaralar' );

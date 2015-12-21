@@ -20,8 +20,8 @@
         </tr>
         <tr valign="top"><th colspan="2"><h1>Sms İle Bildirim Ayarları</h1><hr/></th></tr>
         <tr valign="top"><th colspan="2"><input type="checkbox" name="bulutfon_notify_onOrderComplete" value="1"  <?php $val = get_option('bulutfon_notify_onOrderComplete'); echo !empty($val) ? 'checked' : ''?> /> Sipariş tamamlandığında sms gönder</th></tr>
-        <tr valign="top"><th colspan="2"><input type="checkbox" name="bulutfon_notify_onOrderStatusChange" value="1"  <?php $val = get_option('bulutfon_notify_onOrderStatusChange'); echo !empty($val) ? 'checked' : ''?>/> Sipariş durumu değiştiğinde sms gönder</th></tr>
-        <tr valign="top"><th colspan="2"><input type="checkbox" name="bulutfon_notify_onNewUser" value="1"  <?php $val = get_option('bulutfon_notify_onNewUser'); echo !empty($val) ? 'checked' : ''?>/> Yeni üye olunduğunda sms gönder</th></tr>
+        <tr valign="top"><th colspan="2"><input type="checkbox" name="bulutfon_notify_onOrderStatusChange" value="1"  <?php $val = get_option('bulutfon_notify_onOrderStatusChange'); echo !empty($val) ? 'checked' : ''?>/> Sipariş durumu onaylandığında</th></tr>
+        <tr valign="top"><th colspan="2"><input type="checkbox" name="bulutfon_notify_addOrderNote" value="1"  <?php $val = get_option('bulutfon_notify_addOrderNote'); echo !empty($val) ? 'checked' : ''?>/> Sipariş notu eklendiğinde</th></tr>
 
         <tr valign="top"><th colspan="2"><h1>Sms Gönderme Bilgileri</h1><hr/></th></tr>
         <tr valign="top>">
