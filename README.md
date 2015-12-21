@@ -12,7 +12,7 @@ Mevcut Özellikler
 ===
 * Müşterilere göndereceğiniz sms lerin içeriklerini Template Ayarları bölümünden düzenleyebilir ve yeni template ler oluşturabilirsiniz.
 
-![Sms Template](https://github.com/Projekod/Bulutfon-WooCommerce-Eklentisi/blob/master/document/template_ayarlari.PNG)
+![Sms Template](https://github.com/Projekod/Bulutfon-WooCommerce-Eklentisi/blob/master/document/temlate_ayarlari.PNG)
 
 * Oluşturacağınız Sms Template lere “{}” parantezler içerisinde kullanıcı bilgilerini ekleyebilirsiniz.
 * Üç Sms Template uygulamanın içerisinde yüklü olarak gelecektir. Bunlar Woocommerce event larına bağlı bir şekilde çalışır.
