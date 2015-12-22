@@ -59,3 +59,8 @@ Projekod Yazılım 2013 yılında Denizli’de kurulan, masaüstü ve Web tabanl
 Teşekkür
 ===
 Bulutfon ekibine, sabırları ve destekleri için sonsuz teşekkürler. 
+
+[Oğuzhan Taşçı] 'ya katkılarından dolayı teşekkürler.
+
+[Oğuzhan Taşçı]:https://github.com/oguzhantasci
+
