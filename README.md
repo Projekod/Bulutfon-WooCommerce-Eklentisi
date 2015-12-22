@@ -58,4 +58,4 @@ Projekod Yazılım 2013 yılında Denizli’de kurulan, masaüstü ve Web tabanl
 
 Teşekkür
 ===
-Bulutfon ekibine, sabırları ve destekleri sonsuz teşekkürler. 
+Bulutfon ekibine, sabırları ve destekleri için sonsuz teşekkürler. 
