@@ -205,5 +205,103 @@ function projekod_create_tables(){
     }
 }
 
+function projekod_get_bulutfon_cdr(){
+    include (__DIR__.'/../bulutfon/autoload.php');
+    $masterToken = get_option('bulutfon_masterKey');
+
+    $provider = new \Bulutfon\OAuth2\Client\Provider\Bulutfon(array('verifySSL' => false));
+
+    $out = [];
+    if($masterToken){
+        $token = new \League\OAuth2\Client\Token\AccessToken(array('access_token'=>$masterToken));
+
+        $referans["direction"]["IN"] = "Gelen";
+        $referans["direction"]["OUT"] = "Giden";
+        $referans["direction"]["LOCAL"] = "İç Hat";
+
+        $referans["bf_calltype"]["voice"] = "Sesli";
+        $referans["bf_calltype"]["fax"] = "Fax";
+
+        $cdrConfig = array();
+        if($numaralar = get_option('bulutfon_sms_numaralar')){
+            $cdrConfig = array('callee' =>$numaralar);
+        }
+        $cdrs = $provider->getCdrs($token, $cdrConfig )->getArrayCopy();
+
+//        $number = '905344920157';
+//        print_r(projekod_get_user_from_number($number))
+
+
+        if(isset($cdrs["cdrs"])){
+            $cdrs = $cdrs["cdrs"];
+            foreach($cdrs as $cdr){
+                /** @var $cdr \Bulutfon\OAuth2\Client\Entity\Cdr */;
+                $cdrData = $cdr->getArrayCopy();
+
+
+
+                $cdrData["direction_str"] = "";
+                $cdrData["bf_calltype_str"] = "";
+
+                $cdrData["caller_str"] = projekod_formatPhoneNumber($cdrData["caller"]);
+                $cdrData["callee_str"] = projekod_formatPhoneNumber($cdrData["callee"]);
+
+
+                $info = projekod_get_user_from_number($cdrData["caller"]);
+                $cdrData['old_orders'] = [];
+                if($info){
+                    $cdrData['old_orders'] = $info;
+                }
+
+                if(isset($referans["direction"][$cdrData["direction"]])){
+                    $cdrData["direction_str"] = $referans["direction"][$cdrData["direction"]];
+                }
+                if(isset($referans["bf_calltype"][$cdrData["bf_calltype"]])){
+                    $cdrData["bf_calltype_str"] = $referans["bf_calltype"][$cdrData["bf_calltype"]];
+                }
+
+//                if($callerStr= $this->getNumberName($cdrData["caller"])){
+//                    $cdrData["caller_str"] = ($callerStr);
+//                }
+//
+//                if($calleeStr= $this->getNumberName($cdrData["callee"])){
+//                    $cdrData["callee_str"] = ($calleeStr);
+//                }
+//
+//                if(isset($referans["direction"][$cdrData["direction"]])){
+//                    $cdrData["direction_str"] = $referans["direction"][$cdrData["direction"]];
+//                }
+//                if(isset($referans["bf_calltype"][$cdrData["bf_calltype"]])){
+//                    $cdrData["bf_calltype_str"] = $referans["bf_calltype"][$cdrData["bf_calltype"]];
+//                }
+
+                $out[] = $cdrData;
+            }
+
+        }
+    }
+
+    return $out;
+}
+
+function projekod_formatPhoneNumber($phone)
+{
+
+    if(strlen($phone)==12){
+        $phone = substr($phone,2,strlen($phone));
+    }
+    $phone = preg_replace("/[^0-9]/", "", $phone);
+
+
+
+    if(strlen($phone) == 7)
+        return preg_replace("/([0-9]{3})([0-9]{4})/", "$1-$2", $phone);
+    elseif(strlen($phone) == 10)
+        return preg_replace("/([0-9]{3})([0-9]{3})([0-9]{4})/", "($1) $2-$3", $phone);
+    else
+        return $phone;
+}
+
+
 projekod_register_plugin();
 

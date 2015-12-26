@@ -5,7 +5,7 @@ require __DIR__.'/db.php';
 add_action( 'admin_menu', 'projekod_create_admin_menu' );
 
 function projekod_create_admin_menu() {
-    add_menu_page( 'Bulutfon WooCommerce Eklentisi', 'Bulutfon', 'manage_options', 'bulutfon/admin.php', '', plugins_url( 'bulutfon/images/menu_icon.png' ), 15 );
+    add_menu_page( 'Bulutfon WooCommerce Eklentisi', 'Bulutfon', 'manage_options', 'Bulutfon-WooCommerce-Eklentisi/admin.php', '', plugins_url( 'Bulutfon-WooCommerce-Eklentisi/images/menu_icon.png' ), 15 );
 }
 
 add_action( 'admin_init', 'projekod_register_settings' );
@@ -88,6 +88,23 @@ function action_new_order($order_id){
 }
 
 add_action('woocommerce_order_details_after_order_table', 'action_new_order', 10, 1);
+
+function projekod_registration_save($user_id){
+    global $wpdb;
+
+    $wpdb->insert($wpdb->prefix.'sms_queue',[
+        'date_added' => date('Y-m-d H:i:s'),
+        'status' => '1',
+        'sms_content' => null,
+        'template_id' => $user_id,
+        'phone_number' => '2002',
+        'arguments' => '5656'
+    ]);
+}
+
+add_action( 'user_register', 'projekod_registration_save', 10, 1 );
+
+
 
 
 
