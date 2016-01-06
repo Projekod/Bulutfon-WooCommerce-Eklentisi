@@ -8,6 +8,7 @@ $pages['sms_queue'] = __DIR__.'/pages/sms_queue.php';
 $pages['sms_bulk'] = __DIR__.'/pages/sms_bulk.php';
 $pages['cdr'] = __DIR__.'/pages/cdr.php';
 $pages['setting'] = __DIR__.'/pages/setting.php';
+$pages['setup'] = __DIR__.'/pages/setup.php';
 
 foreach($pages as $pKey=>$pValue){
     $activeTab[$pKey] = '';

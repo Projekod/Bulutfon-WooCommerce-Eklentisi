@@ -8,5 +8,6 @@ global $activeTab; ?>
         <a href="<?=menu_page_url( 'Bulutfon-WooCommerce-Eklentisi/admin.php', false ); ?>&tab=sms_bulk" class="nav-tab <?=$activeTab['sms_bulk']; ?>">Toplu Sms Gönder</a>
         <a href="<?=menu_page_url( 'Bulutfon-WooCommerce-Eklentisi/admin.php', false ); ?>&tab=cdr" class="nav-tab <?=$activeTab['cdr']; ?>">Arama Geçmişi</a>
         <a href="<?=menu_page_url( 'Bulutfon-WooCommerce-Eklentisi/admin.php', false ); ?>&tab=setting" class="nav-tab <?=$activeTab['setting']; ?>">Ayarlar</a>
+        <a href="<?=menu_page_url( 'Bulutfon-WooCommerce-Eklentisi/admin.php', false ); ?>&tab=setup" class="nav-tab <?=$activeTab['setup']; ?>">Kurulum</a>
     </h2>
 
