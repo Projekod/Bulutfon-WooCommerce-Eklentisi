@@ -27,7 +27,6 @@ function projekod_get_sms_template_from_status($status){
 
 function projekod_add_to_queue(){
     global $wpdb;
-    print_r($_POST['ids']);
     if(isset($_POST) && $_POST){
         $customers = projekod_get_all_customers();
         foreach($_POST['ids'] as $id){
