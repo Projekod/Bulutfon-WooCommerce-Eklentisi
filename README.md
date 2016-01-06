@@ -42,6 +42,12 @@ Eklentinin Yüklenmesi ve Kullanımı
 
 * Oluşturduğumuz Master Key i ve Sms Başlığını ekletimizdeki ayarlar bölümünden girip kaydediyoruz. Bu adımdan sonra ekletinin özelliklerini kullanmaya başlayabilirsiniz.
 
+Eklentinin Videolu Kurulumu
+==
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/loKLgabnBVo/0.jpg)]
+(https://www.youtube.com/watch?v=loKLgabnBVo)
+
 Sistem Gereksinimleri
 ===
 * Wordpress 4.4 ve üzeri
