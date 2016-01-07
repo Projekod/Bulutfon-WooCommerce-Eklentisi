@@ -47,6 +47,13 @@ function projekod_add_to_queue(){
     }
 }
 
+function projekod_clear_sms_gueue(){
+    global $wpdb;
+    if(isset($_POST) && $_POST){
+        $wpdb->query('TRUNCATE TABLE '.$wpdb->prefix.'sms_queue');
+    }
+}
+
 function projekod_add_to_sms_template(){
     global $wpdb;
     if(isset($_POST) && $_POST){
