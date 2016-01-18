@@ -1,0 +1,29 @@
+## 0.0.5 - 2016-01-07
+### Added
+-Sms kuyruðundaki sms leri silme özelliðinin eklenmesi
+### Change
+-Default sms lerin gönderim kontrolleri deðiþtirildi
+
+
+## 0.0.4 - 2015-12-26
+### Added
+-Arama geçmiþi bölümünün eklenmesi
+-Arama geçmiþi bölümüne santral numarasý filtreleme özelliðinin eklenmesi
+
+
+## 0.0.3 - 2015-12-22
+### Added
+-Woocommerce sipariþ tamamlanma, sipariþ oluþturulma ve sipariþ notu eklenme triggerlarý eklenmesi
+
+
+## 0.0.2 - 2015-12-19
+### Added
+-3 durum için default sms templatelerinin oluþturulmasý
+-3 default sms template in içeriklerinin deðiþtirilmesinin saðlanmasý
+-Gönderilecek sms lerin kuruk bölümüne eklenmesi
+
+
+## 0.0.1 - 2015-12-18
+### Added
+-3 Durum dýþýnda seçilen üyelere özel mesaj gönderiminin saðlanmasý
+-Eklentini yönetileceði ayarlar bölümünün eklenmesi
