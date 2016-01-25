@@ -66,6 +66,7 @@ function action_new_customer_note($data){
             'status' => '1',
             'sms_content' => null,
             'template_id' => $link->id,
+            'order_id' => $data['order_id'],
             'phone_number' => get_post_meta($data['order_id'], '_billing_phone', true),
             'arguments' => json_encode($argument)
         ]);
