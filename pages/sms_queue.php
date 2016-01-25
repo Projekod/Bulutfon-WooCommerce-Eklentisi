@@ -15,6 +15,7 @@ $queue = projekod_get_sms_queue();
                 <th>Mesaj İçeriği</th>
                 <th>Arguments</th>
                 <th>Template ID</th>
+                <th>Sipariş Numarası</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@ $queue = projekod_get_sms_queue();
             <th title="<?php echo projekod_get_sms_template($q->template_id)[0]->content; ?>">
                 <a href="#template_edit" data-toggle="tab"><?php echo $q->template_id?></a>
             </th>
+            <th><?php if($q->order_id == null){ echo 'Özel SMS';}else { echo $q->order_id;} ?></th>
             <th>
                 <?php if($q->status == 1): ?>
                     <label class="label label-primary">Bekliyor</label>

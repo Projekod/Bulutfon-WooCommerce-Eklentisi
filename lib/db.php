@@ -185,6 +185,7 @@ function projekod_create_tables(){
           `status` tinyint(1) DEFAULT '1',
           `sms_content` text(2),
           `template_id` int(11) NOT NULL,
+          `order_id` int(11) DEFAULT NULL,
           `phone_number` text(2) NOT NULL,
           `arguments` text(2) NOT NULL,
           PRIMARY KEY (`id`)

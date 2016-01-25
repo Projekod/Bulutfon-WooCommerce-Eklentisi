@@ -31,14 +31,18 @@ function action_order_status_completed( $order_id ) {
             'soyad' => get_post_meta($order_id, '_billing_last_name', true),
         ];
         $link = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "sms_template WHERE name = 'Sipariş Onaylandı'");
-        $wpdb->insert($wpdb->prefix . 'sms_queue', [
-            'date_added' => date('Y-m-d H:i:s'),
-            'status' => '1',
-            'sms_content' => null,
-            'template_id' => $link->id,
-            'phone_number' => get_post_meta($order_id, '_billing_phone', true),
-            'arguments' => json_encode($argument)
-        ]);
+        $control = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "sms_queue WHERE template_id=".$link->id." AND order_id=".$order_id);
+        if($control == null) {
+            $wpdb->insert($wpdb->prefix . 'sms_queue', [
+                'date_added' => date('Y-m-d H:i:s'),
+                'status' => '1',
+                'sms_content' => null,
+                'template_id' => $link->id,
+                'order_id' => $order_id,
+                'phone_number' => get_post_meta($order_id, '_billing_phone', true),
+                'arguments' => json_encode($argument)
+            ]);
+        }
     }
 };
 
@@ -70,11 +74,11 @@ function action_new_customer_note($data){
 
 add_action('woocommerce_new_customer_note', 'action_new_customer_note', 10, 1);
 
-function action_new_order($order_id){
+function action_new_order($orderObj){
     if(get_option('bulutfon_notify_onOrderStatusChange')) {
         global $wpdb;
 
-        $order = wc_get_order($order_id);
+        $order = wc_get_order($orderObj);
 
         $argument = [
             'ad' => $order->billing_first_name,
@@ -82,15 +86,18 @@ function action_new_order($order_id){
         ];
 
         $link = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "sms_template WHERE name = 'Sipariş Oluşturuldu'");
-
-        $wpdb->insert($wpdb->prefix . 'sms_queue', [
-            'date_added' => date('Y-m-d H:i:s'),
-            'status' => '1',
-            'sms_content' => null,
-            'template_id' => $link->id,
-            'phone_number' => $order->billing_phone,
-            'arguments' => json_encode($argument)
-        ]);
+        $control = $wpdb->get_row("SELECT * FROM " . $wpdb->prefix . "sms_queue WHERE template_id=".$link->id." AND order_id=".$orderObj->id);
+        if($control == null) {
+            $wpdb->insert($wpdb->prefix . 'sms_queue', [
+                'date_added' => date('Y-m-d H:i:s'),
+                'status' => '1',
+                'sms_content' => null,
+                'template_id' => $link->id,
+                'order_id' => $orderObj->id,
+                'phone_number' => $order->billing_phone,
+                'arguments' => json_encode($argument)
+            ]);
+        }
     }
 }
 

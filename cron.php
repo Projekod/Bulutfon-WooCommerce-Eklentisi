@@ -53,6 +53,7 @@ if($token == $secureKey){
 
 
             $sonuc =(array) $provider->sendMessage($ac,$m);
+            echo $sonuc['message']."<br>";
             if(isset($sonuc["message"]) && $sonuc["message"]=="Messages created successfully"){
                 $sorgu = "update ". $wpdb->prefix."sms_queue set sms_content='$content',status=2";
                 $wpdb->query($sorgu);

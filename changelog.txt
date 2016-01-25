@@ -1,3 +1,9 @@
+## 0.0.6 - 2016-01-25
+### Added
+-Sms kuyruðuna sipariþ numarasý eklendi
+### Bug fix
+-Sipariþ oluþturulduðunda ve sipariþ tamamlandýðýnda durumlarý için ayný template id ve sipariþ numarasý ile sms kuyruðuna ekleme engellendi
+
 ## 0.0.5 - 2016-01-07
 ### Added
 -Sms kuyruðundaki sms leri silme özelliðinin eklenmesi
