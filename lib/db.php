@@ -146,19 +146,19 @@ function projekod_insert_sms_default_template(){
             'date_added' => date('Y-m-d H:i:s'),
             'status' => '0',
             'name' => 'Sipariş Onaylandı',
-            'content' => '{ad}{soyad}'
+            'content' => '{ad} {soyad}'
         ]);
         $wpdb->insert($wpdb->prefix.'sms_template', [
             'date_added' => date('Y-m-d H:i:s'),
             'status' => '0',
             'name' => 'Sipariş Notu',
-            'content' => '{ad}{soyad}{not}'
+            'content' => '{ad} {soyad} {not}'
         ]);
         $wpdb->insert($wpdb->prefix.'sms_template', [
             'date_added' => date('Y-m-d H:i:s'),
             'status' => '0',
             'name' => 'Sipariş Oluşturuldu',
-            'content' => '{ad}{soyad}'
+            'content' => '{ad} {soyad}'
         ]);
     }
 }

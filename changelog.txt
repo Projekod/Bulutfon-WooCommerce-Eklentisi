@@ -1,3 +1,11 @@
+## 0.0.7 - 2016-02-02
+### Change
+-Default sms lerin içerikleri düzenlendi.
+### Bug fix
+-Sms gönderimi sırasında ortaya çıkan sorunlar giderildi.
+### Added
+-Sms gönderimi sırasında meydana gelen hataların ekrana basılması sağlandı.
+
 ## 0.0.6 - 2016-01-25
 ### Added
 -Sms kuyruğuna sipariş numarası eklendi
